@@ -9,7 +9,7 @@ pub async fn format(text: &str, extension: &str) -> io::Result<String> {
     fs::write(dir.path().join(&input), text).await?;
 
     Command::new("latexindent")
-        .args(&["-o", &output, &input])
+        .args(&["-l", "-m", "-o", &output, &input])
         .current_dir(dir.path())
         .stdin(Stdio::null())
         .stdout(Stdio::null())
